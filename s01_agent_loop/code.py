@@ -93,7 +93,7 @@ def agent_loop(messages: list):
         messages.append({"role": "assistant", "content": response.content})
 
         # If the model didn't call a tool, we're done
-        if response.stop_reason != "tool_use":
+        if response.stop_reason == "end_turn":
             return
 
         # Execute each tool call, collect results
